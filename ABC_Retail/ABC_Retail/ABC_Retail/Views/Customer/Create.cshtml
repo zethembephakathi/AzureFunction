@@ -1,0 +1,28 @@
+@model ABC_Retail.Models.Customer
+
+<div class="card pink-card mb-4 align-items-center">
+    <div class="card-body">
+        <h2 class="card-title">Create Customer</h2>
+        <form asp-action="Create" method="post" class="form-vertical">
+
+            <div class="mb-3 col-10">
+                <input asp-for="Id" class="form-control" placeholder="ID" required />
+            </div>
+
+            <div class="mb-3 col-10">
+                <input asp-for="Name" class="form-control" placeholder="Name" required />
+            </div>
+
+            <div class="mb-3 col-10">
+                <input asp-for="Email" class="form-control" placeholder="Email" required />
+            </div>
+
+            <div class="mb-3 col-10">
+                <input asp-for="Address" class="form-control" placeholder="Address" required />
+            </div>
+            <div class="mb-3 col-9 mx-2">
+                <button type="submit" class="btn btn-primary w-100">Submit Customer</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\bin\Release\net8.0\AbcRetail_Data.deps.json
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\bin\Release\net8.0\AbcRetail_Data.dll
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\bin\Release\net8.0\AbcRetail_Data.pdb
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\obj\Release\net8.0\AbcRetail_Data.csproj.AssemblyReference.cache
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\obj\Release\net8.0\AbcRetail_Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\obj\Release\net8.0\AbcRetail_Data.AssemblyInfoInputs.cache
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\obj\Release\net8.0\AbcRetail_Data.AssemblyInfo.cs
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\obj\Release\net8.0\AbcRetail_Data.csproj.CoreCompileInputs.cache
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\obj\Release\net8.0\AbcRetail_Data.dll
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\obj\Release\net8.0\refint\AbcRetail_Data.dll
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\obj\Release\net8.0\AbcRetail_Data.pdb
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\AbcRetail_Data\obj\Release\net8.0\ref\AbcRetail_Data.dll

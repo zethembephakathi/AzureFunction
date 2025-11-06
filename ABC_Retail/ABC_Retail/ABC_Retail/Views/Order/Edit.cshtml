@@ -1,0 +1,85 @@
+﻿@model ABC_Retail.Models.Order
+
+@{
+    var productsList = ViewBag.Products as List<ABC_Retail.Models.Products> ?? new List<ABC_Retail.Models.Products>();
+    var customersList = ViewBag.Customers as List<ABC_Retail.Models.Customer> ?? new List<ABC_Retail.Models.Customer>();
+
+    var productPrices = new Dictionary<string, double>();
+    foreach (var product in productsList)
+    {
+        productPrices[product.Id] = product.Price;
+    }
+    var productPricesJson = System.Text.Json.JsonSerializer.Serialize(productPrices);
+}
+
+<div class="card pink-card mb-4">
+    <div class="card-body">
+        <h2 class="card-title">Edit Order</h2>
+
+        @if (TempData["OrderMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                @TempData["OrderMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group mb-3">
+                <label asp-for="CustomerId"></label>
+                <select asp-for="CustomerId" class="form-control" asp-items="@(new SelectList(customersList, "Id", "Name", Model?.CustomerId))" required>
+                    <option value="">-- Select Customer --</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ProductId"></label>
+                <select asp-for="ProductId" class="form-control" id="ProductId" asp-items="@(new SelectList(productsList, "Id", "Name", Model?.ProductId))" required>
+                    <option value="">-- Select Product --</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Quantity"></label>
+                <input asp-for="Quantity" type="number" class="form-control" id="Quantity" required min="1" value="@(Model?.Quantity ?? 1)" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="TotalPrice"></label>
+                <input asp-for="TotalPrice" type="number" step="0.01" class="form-control" id="TotalPrice" readonly value="@(Model?.TotalPrice ?? 0)" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Order</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var productPrices = @Html.Raw(productPricesJson);
+
+        function updateTotalPrice() {
+            var productId = document.getElementById("ProductId").value;
+            var quantity = parseInt(document.getElementById("Quantity").value) || 0;
+            var price = productPrices[productId] || 0;
+            var total = price * quantity;
+            document.getElementById("TotalPrice").value = total.toFixed(2);
+        }
+
+        document.getElementById("ProductId").addEventListener("change", updateTotalPrice);
+        document.getElementById("Quantity").addEventListener("input", updateTotalPrice);
+        document.addEventListener("DOMContentLoaded", updateTotalPrice);
+    </script>
+}

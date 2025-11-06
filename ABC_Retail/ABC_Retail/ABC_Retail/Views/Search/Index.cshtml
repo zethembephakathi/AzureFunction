@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Search";
+}
+
+<h2 class="mb-4">Search</h2>
+
+<div class="container">
+    <!-- Customer Search -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>Search Customers</h4>
+            <form asp-action="Customer" asp-controller="Search" method="get">
+                <div class="mb-3">
+                    <label for="customerId" class="form-label">Customer ID</label>
+                    <input type="text" name="id" class="form-control" placeholder="Enter Customer ID" />
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+            @if (ViewBag.Customer != null)
+            {
+                <div class="mt-3 alert alert-success">
+                    <strong>@ViewBag.Customer.Name</strong>
+                    <br /> Email: @ViewBag.Customer.Email
+                    <br /> Address: @ViewBag.Customer.Address
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Product Search -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>Search Products</h4>
+            <form asp-action="Product" asp-controller="Search" method="get">
+                <div class="mb-3">
+                    <label for="productId" class="form-label">Product ID</label>
+                    <input type="text" name="id" class="form-control" placeholder="Enter Product ID" />
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+            @if (ViewBag.Product != null)
+            {
+                <div class="mt-3 alert alert-info">
+                    <strong>@ViewBag.Product.Name</strong>
+                    <br /> Description: @ViewBag.Product.Description
+                    <br /> Price: @ViewBag.Product.Price.ToString("C")
+                    <br /> <img src="@ViewBag.Product.ImageUrl" alt="Product Image" width="100" />
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Order Search -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>Search Orders</h4>
+            <form asp-action="Order" asp-controller="Search" method="get">
+                <div class="mb-3">
+                    <label for="orderId" class="form-label">Order ID</label>
+                    <input type="text" name="id" class="form-control" placeholder="Enter Order ID" />
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+            @if (ViewBag.Order != null)
+            {
+                <div class="mt-3 alert alert-warning">
+                    <strong>Order ID:</strong> @ViewBag.Order.Id
+                    <br /> Customer ID: @ViewBag.Order.CustomerId
+                    <br /> Product ID: @ViewBag.Order.ProductId
+                    <br /> Quantity: @ViewBag.Order.Quantity
+                    <br /> Total Price: @ViewBag.Order.TotalPrice.ToString("C")
+                </div>
+            }
+        </div>
+    </div>
+</div>

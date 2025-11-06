@@ -1,0 +1,82 @@
+@model IEnumerable<ABC_Retail.Models.Products>
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h2>Product List</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<!-- Filter form -->
+<form method="get" asp-action="Index" class="mb-3 row g-2">
+    <div class="col-md-3 col-12">
+        <select class="form-select" name="category">
+            <option value="">All Categories</option>
+            @foreach (var cat in Model.Select(p => p.Category).Distinct())
+            {
+                <option value="@cat">@cat</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2 col-6">
+        <input type="number" name="minPrice" class="form-control" placeholder="Min Price" step="0.01" />
+    </div>
+    <div class="col-md-2 col-6">
+        <input type="number" name="maxPrice" class="form-control" placeholder="Max Price" step="0.01" />
+    </div>
+    <div class="col-md-2 col-6">
+        <select class="form-select" name="inStock">
+            <option value="">Availability</option>
+            <option value="true">In Stock</option>
+        </select>
+    </div>
+    <div class="col-md-2 col-6">
+        <button type="submit" class="btn btn-primary w-100">Filter</button>
+    </div>
+</form>
+
+<!-- Product table -->
+<table class="table table-hover table-striped pink-card">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Stock</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr class="align-middle">
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>$@product.Price</td>
+                <td>@product.Category</td>
+                <td>@(product.StockQuantity > 0 ? "Available" : "Out of Stock")</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        <img src="@product.ImageUrl" alt="Product Image" width="80" style="border-radius:5px;" />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning btn-sm mb-1">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger btn-sm mb-1">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary mt-3">Add New Product</a>

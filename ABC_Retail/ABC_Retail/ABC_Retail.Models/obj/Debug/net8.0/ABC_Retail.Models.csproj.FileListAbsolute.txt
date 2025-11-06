@@ -1,0 +1,12 @@
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Functions\bin\output\ABC_Retail.Models.deps.json
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Functions\bin\output\ABC_Retail.Models.dll
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Functions\bin\output\ABC_Retail.Models.pdb
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Models\obj\Debug\net8.0\ABC_Retail.Models.csproj.AssemblyReference.cache
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Models\obj\Debug\net8.0\ABC_Retail.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Models\obj\Debug\net8.0\ABC_Retail.Models.AssemblyInfoInputs.cache
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Models\obj\Debug\net8.0\ABC_Retail.Models.AssemblyInfo.cs
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Models\obj\Debug\net8.0\ABC_Retail.Models.csproj.CoreCompileInputs.cache
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Models\obj\Debug\net8.0\ABC_Retail.Models.dll
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Models\obj\Debug\net8.0\refint\ABC_Retail.Models.dll
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Models\obj\Debug\net8.0\ABC_Retail.Models.pdb
+C:\Users\RC_Student_Lab\Downloads\ST10099984_Zethembe Phakathi_Project2_cldv7112\ABC_Retail\ABC_Retail\ABC_Retail.Models\obj\Debug\net8.0\ref\ABC_Retail.Models.dll

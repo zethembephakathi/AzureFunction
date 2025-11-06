@@ -1,0 +1,69 @@
+@model ABC_Retail.Models.Products
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<div class="card pink-card mb-4">
+    <div class="card-body">
+        <h2 class="card-title">Edit Product</h2>
+
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <input asp-for="Id" type="hidden" /> <!-- ID is submitted hidden -->
+
+            <div class="mb-2">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2">
+                <label asp-for="Description" class="form-label"></label>
+                <input asp-for="Description" class="form-control" required />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" type="number" step="0.01" class="form-control" required />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2">
+                <label asp-for="Category" class="form-label"></label>
+                <input asp-for="Category" class="form-control" required />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2">
+                <label asp-for="StockQuantity" class="form-label"></label>
+                <input asp-for="StockQuantity" type="number" class="form-control" required />
+                <span asp-validation-for="StockQuantity" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Current Image</label>
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <div class="mb-2">
+                        <img src="@Model.ImageUrl" alt="Product Image" width="100" />
+                    </div>
+                }
+                <input asp-for="ImageUrl" class="form-control" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Change Image</label>
+                <input type="file" name="ImageFile" accept="image/*" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a asp-action="Index" class="btn btn-link mt-2">Back to List</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

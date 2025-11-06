@@ -1,0 +1,67 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Queue Messages";
+}
+
+<h2>Queue Messages</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info mt-3">
+        No messages found in the queue.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Order ID</th>
+                <th>Customer ID</th>
+                <th>Product ID</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Action</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var parts = Model[i].Split(';')
+                .Select(p => p.Split(':'))
+                .ToDictionary(arr => arr[0], arr => arr.Length > 1 ? arr[1] : "");
+
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@parts.GetValueOrDefault("OrderId")</td>
+                    <td>@parts.GetValueOrDefault("CustomerId")</td>
+                    <td>@parts.GetValueOrDefault("ProductId")</td>
+                    <td>@parts.GetValueOrDefault("Quantity")</td>
+                    <td>@parts.GetValueOrDefault("TotalPrice")</td>
+                    <td>@parts.GetValueOrDefault("Action")</td>
+                    <td>
+                        @switch (parts.GetValueOrDefault("Status"))
+                        {
+                            case "Started":
+                                <span class="badge bg-warning text-dark">Started</span>
+                                break;
+                            case "Success":
+                                <span class="badge bg-success">Success</span>
+                                break;
+                            case "Completed":
+                                <span class="badge bg-primary">Completed</span>
+                                break;
+                            default:
+                                <span class="badge bg-secondary">Unknown</span>
+                                break;
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Index" class="btn btn-primary mt-3">Back to Orders</a>

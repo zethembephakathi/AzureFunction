@@ -1,0 +1,60 @@
+@model IEnumerable<ABC_Retail.Models.OrderViewModel>
+
+<h2>Order List</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<style>
+    .pink-table thead tr {
+        background-color: #ff99cc !important; /* pink header */
+        color: white !important;
+    }
+
+    .pink-table tbody tr:nth-child(odd) {
+        background-color: #ffe6f0; /* light pink */
+    }
+
+    .pink-table tbody tr:nth-child(even) {
+        background-color: #ffd6e8; /* slightly darker pink */
+    }
+</style>
+
+<table class="table table-bordered table-striped mt-3 pink-table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.CustomerId</td>
+                <td>@order.ProductName</td>
+                <td>@order.ProductDescription</td>
+                <td>@order.Quantity</td>
+                <td>@order.TotalPrice</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@order.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@order.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary mt-3">Create New Order</a>
+<a asp-action="Queue" class="btn btn-info mt-3">View Queue Messages</a>

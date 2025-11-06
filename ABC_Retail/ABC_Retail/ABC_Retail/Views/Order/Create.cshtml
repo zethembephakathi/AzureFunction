@@ -1,0 +1,76 @@
+@model ABC_Retail.Models.Order
+@{
+    ViewData["Title"] = "Create Order";
+}
+
+<div class="card pink-card mb-4">
+    <div class="card-body">
+        <h2 class="card-title">Create Order</h2>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+        }
+
+        @if (TempData["OrderMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["OrderMessage"]</div>
+        }
+
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label asp-for="CustomerId" class="form-label">Customer</label>
+                <select asp-for="CustomerId" class="form-control" asp-items="@(new SelectList(ViewBag.Customers, "Id", "Name"))">
+                    <option value="">-- Select Customer --</option>
+                </select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ProductId" class="form-label">Product</label>
+                <select id="productDropdown" asp-for="ProductId" class="form-control" asp-items="@(new SelectList(ViewBag.Products, "Id", "Name"))">
+                    <option value="">-- Select Product --</option>
+                </select>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input id="productPrice" class="form-control" type="text" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Quantity" class="form-label">Quantity</label>
+                <input asp-for="Quantity" class="form-control" type="number" min="1" value="1" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3">
+                <button type="submit" class="btn btn-primary px-5">Submit Order</button>
+            </div>
+        </form>
+        <a asp-action="Queue" class="btn btn-info mt-3">View Queue Messages</a>
+
+        <a asp-action="Index" class="btn btn-link mt-3">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Map productId -> price from ViewBag.Products
+        var productPrices = {};
+        @foreach (var product in ViewBag.Products)
+        {
+                    @:productPrices['@product.Id'] = '@product.Price';
+        }
+
+        document.getElementById("productDropdown").addEventListener("change", function () {
+            var selectedId = this.value;
+            document.getElementById("productPrice").value = productPrices[selectedId] || "";
+        });
+    </script>
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

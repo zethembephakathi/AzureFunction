@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ABC_Retail.Models.Customer>
+
+<h2>Customer List</h2>
+
+<style>
+    .pink-table {
+        border: 1px solid #ffb6c1;
+        border-radius: 12px; /* rounded corners */
+        overflow: hidden; /* keep rounded edges */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* soft shadow */
+    }
+
+        .pink-table thead tr {
+            background-color: #ff99cc !important; /* force darker pink header */
+            color: white !important;
+        }
+
+        .pink-table tbody tr:nth-child(odd) {
+            background-color: #ffe6f0; /* light pink */
+        }
+
+        .pink-table tbody tr:nth-child(even) {
+            background-color: #ffd6e8; /* slightly darker pink */
+        }
+</style>
+
+<table class="table table-bordered pink-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+                <td>@customer.Address</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@customer.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@customer.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Add New Customer</a>
